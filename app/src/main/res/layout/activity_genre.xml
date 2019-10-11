@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data class="GenreBinding"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.genre.GenreActivity">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recGenre"
+            android:layout_above="@+id/layout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:id="@+id/layout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            tools:layout_editor_absoluteX="0dp">
+            <TextView
+                android:onClick="onNext"
+                android:layout_margin="@dimen/small_margin"
+                android:textSize="@dimen/normal_txt"
+                android:textColor="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

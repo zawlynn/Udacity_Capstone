@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="BindingPodcastItem"/>
+    <LinearLayout
+        android:layout_margin="@dimen/small_margin"
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgPodcastThumb"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+        <TextView
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:id="@+id/tv_podcast_title"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Soul Cast</string>
+    <string name="facebook_app_id">1021527704905738</string>
+    <string name="fb_login_protocol_scheme">fb1021527704905738</string>
+    <string name="sign_in_with_facebook">Sign in with facebook</string>
+    <string name="sign_in_with_google">Sign in with google</string>
+    <string name="sign_up_with_email">Sign up with email.</string>
+    <string name="already_has">Already have an account?</string>
+    <string name="select_genre">Select Genre</string>
+    <string name="next">Next</string>
+    <string name="wait_message">Please wait a moment. \nWe are getting lastest podcasts.</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="genre">Genre</string>
+    <string name="curated">Curated Podcasts</string>
+    <string name="you_might_like">You might like this podcasts</string>
+    <string name="title_activity_podcast">PodcastActivity</string>
+</resources>

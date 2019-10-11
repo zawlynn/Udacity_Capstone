@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="LoginBinding"/>
+    <RelativeLayout
+        android:background="@color/black"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_app_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <LinearLayout
+            android:id="@+id/layout_button"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:id="@+id/login_button"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@color/fui_bgFacebook"
+                android:drawableStart="@mipmap/ic_facebook_icon"
+                android:drawablePadding="5dp"
+                android:text="@string/sign_in_with_facebook"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+            <Button
+                android:layout_gravity="center"
+                android:id="@+id/google_button"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableStart="@mipmap/ic_google_icon"
+                android:drawablePadding="5dp"
+                android:textColor="@color/black"
+                android:text="@string/sign_in_with_google"
+                android:textAllCaps="false" />
+            <Button
+                android:textColor="@color/black"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:id="@+id/sign_up"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawablePadding="5dp"
+                android:text="@string/sign_up_with_email"
+                android:textAllCaps="false" />
+          >
+        </LinearLayout>
+        <TextView
+            android:layout_margin="20dp"
+            android:layout_alignParentBottom="true"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/main_font"
+            android:text="@string/already_has"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</layout>
