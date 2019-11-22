@@ -1,4 +1,4 @@
-package com.zawlynn.udacitycapstoneproject.repository;
+package com.zawlynn.udacitycapstoneproject.data.repository;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,7 +14,9 @@ import com.zawlynn.udacitycapstoneproject.data.network.Resource;
 import com.zawlynn.udacitycapstoneproject.data.network.Response.BestPodcastResponse;
 import com.zawlynn.udacitycapstoneproject.data.network.Response.CuratedResponse;
 import com.zawlynn.udacitycapstoneproject.data.network.Response.GenreResponse;
-import com.zawlynn.udacitycapstoneproject.data.network.Response.RecommendationsResponse;
+import com.zawlynn.udacitycapstoneproject.data.network.Response.PodcastMetadataResponse;
+import com.zawlynn.udacitycapstoneproject.data.network.Response.RecommendedEpisodesResponse;
+import com.zawlynn.udacitycapstoneproject.data.network.Response.SearchPodcastResponse;
 import com.zawlynn.udacitycapstoneproject.pojo.CuratedPodcast;
 import com.zawlynn.udacitycapstoneproject.pojo.Episode;
 import com.zawlynn.udacitycapstoneproject.pojo.Genre;
@@ -75,9 +77,9 @@ public class ApiRepository {
     }
 
     public Flowable<Resource<List<Episode>>> getRecommendations(Context context) {
-        return new NetworkBoundResource<List<Episode>, RecommendationsResponse>(context) {
+        return new NetworkBoundResource<List<Episode>, RecommendedEpisodesResponse>(context) {
             @Override
-            protected void saveCallResult(RecommendationsResponse request) {
+            protected void saveCallResult(RecommendedEpisodesResponse request) {
                 episodeDao.saveEpisodes(request.getRecommendations());
             }
 
@@ -87,7 +89,7 @@ public class ApiRepository {
             }
 
             @Override
-            protected Flowable<Response<RecommendationsResponse>> createCall() {
+            protected Flowable<Response<RecommendedEpisodesResponse>> createCall() {
                 return apiServices.getRecommendations();
             }
         }.asFlowable();
@@ -111,9 +113,15 @@ public class ApiRepository {
             }
         }.asFlowable();
     }
-
+    public Flowable<SearchPodcastResponse> searchPodcast(String query){
+        return apiServices.searchPodcast(query,"1","1");
+    }
     public Flowable<BestPodcastResponse> getBestPodcasts(String page) {
        return apiServices.getBestPodcasts(page);
     }
+    public Flowable<PodcastMetadataResponse> getPodcastMetadata(String id) {
+        return apiServices.getPodcastMetadata(id);
+    }
+
 }
 

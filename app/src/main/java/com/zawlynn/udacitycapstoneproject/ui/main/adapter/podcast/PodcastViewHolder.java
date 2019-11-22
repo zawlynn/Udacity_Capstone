@@ -12,6 +12,7 @@ import com.zawlynn.udacitycapstoneproject.databinding.BindingEpisodeItem;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingPodcastItem;
 import com.zawlynn.udacitycapstoneproject.pojo.Episode;
 import com.zawlynn.udacitycapstoneproject.pojo.Podcast;
+import com.zawlynn.udacitycapstoneproject.ui.main.event.OnPodcastClick;
 
 
 class PodcastViewHolder extends RecyclerView.ViewHolder {
@@ -24,10 +25,19 @@ class PodcastViewHolder extends RecyclerView.ViewHolder {
         context = binding.getRoot().getContext();
     }
 
-    void bind(Podcast item) {
-        itemBinding.tvPodcastTitle.setText(item.getTitle());
+    void bind(Podcast item, OnPodcastClick onPodcastClick) {
+        if(item.getTitle()!=null){
+            itemBinding.tvPodcastTitle.setText(item.getTitle());
+        }else {
+            itemBinding.tvPodcastTitle.setText(item.getTitle_original());
+        }
+
         Glide.with(context)
                 .load(item.getThumbnail())
                 .into(itemBinding.imgPodcastThumb);
+        itemBinding.imgPodcastThumb.setOnClickListener(v -> {
+            onPodcastClick.onPodcastClick(item);
+        });
+
     }
 }

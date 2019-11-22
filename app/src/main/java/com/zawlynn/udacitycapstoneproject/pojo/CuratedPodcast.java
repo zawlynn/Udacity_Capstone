@@ -1,5 +1,8 @@
 package com.zawlynn.udacitycapstoneproject.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -12,10 +15,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class CuratedPodcast {
+public class CuratedPodcast implements Parcelable {
     private long pub_date_ms;
     @TypeConverters(PodcastTypeConverters.class)
-    private ArrayList<Podcast> podcasts=new ArrayList<>();
+    private ArrayList<Podcast> podcasts;
     private String description;
     private String title;
     private String source_domain;
@@ -24,6 +27,49 @@ public class CuratedPodcast {
     private String id;
     private String listennotes_url;
     private String source_url;
+
+    public CuratedPodcast(){
+
+    }
+    protected CuratedPodcast(Parcel in) {
+        pub_date_ms = in.readLong();
+        podcasts = in.createTypedArrayList(Podcast.CREATOR);
+        description = in.readString();
+        title = in.readString();
+        source_domain = in.readString();
+        id = in.readString();
+        listennotes_url = in.readString();
+        source_url = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(pub_date_ms);
+        dest.writeTypedList(podcasts);
+        dest.writeString(description);
+        dest.writeString(title);
+        dest.writeString(source_domain);
+        dest.writeString(id);
+        dest.writeString(listennotes_url);
+        dest.writeString(source_url);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<CuratedPodcast> CREATOR = new Creator<CuratedPodcast>() {
+        @Override
+        public CuratedPodcast createFromParcel(Parcel in) {
+            return new CuratedPodcast(in);
+        }
+
+        @Override
+        public CuratedPodcast[] newArray(int size) {
+            return new CuratedPodcast[size];
+        }
+    };
 
     @Override
     public boolean equals(Object o) {

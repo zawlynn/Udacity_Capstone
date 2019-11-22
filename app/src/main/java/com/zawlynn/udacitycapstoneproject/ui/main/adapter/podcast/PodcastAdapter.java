@@ -11,10 +11,13 @@ import com.zawlynn.udacitycapstoneproject.databinding.BindingEpisodeItem;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingPodcastItem;
 import com.zawlynn.udacitycapstoneproject.pojo.Episode;
 import com.zawlynn.udacitycapstoneproject.pojo.Podcast;
+import com.zawlynn.udacitycapstoneproject.ui.main.event.OnPodcastClick;
 
 public class PodcastAdapter extends ListAdapter<Podcast, PodcastViewHolder> {
-    public PodcastAdapter() {
+    public OnPodcastClick podcastClick;
+    public PodcastAdapter(OnPodcastClick onPodcastClick) {
         super(new PodcastItemCallback());
+        podcastClick=onPodcastClick;
     }
     @NonNull
     @Override
@@ -27,8 +30,7 @@ public class PodcastAdapter extends ListAdapter<Podcast, PodcastViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PodcastViewHolder holder, int position) {
         Podcast item=getItem(position);
-        holder.bind(item);
-        holder.setIsRecyclable(false);
+        holder.bind(item,podcastClick);
     }
 
     @Override

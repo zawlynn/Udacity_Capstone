@@ -1,5 +1,8 @@
 package com.zawlynn.udacitycapstoneproject.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +10,7 @@ import androidx.room.PrimaryKey;
 import java.util.Objects;
 
 @Entity
-public class Podcast {
+public class Podcast implements Parcelable {
     private String listennotes_url;
     private String title;
     private String image;
@@ -18,7 +21,42 @@ public class Podcast {
     private String publisher;
     private String description;
     private long total_episodes;
+    public Podcast(){
 
+    }
+    protected Podcast(Parcel in) {
+        listennotes_url = in.readString();
+        title = in.readString();
+        image = in.readString();
+        id = in.readString();
+        thumbnail = in.readString();
+        publisher = in.readString();
+        description = in.readString();
+        total_episodes = in.readLong();
+        title_original = in.readString();
+    }
+
+    public static final Creator<Podcast> CREATOR = new Creator<Podcast>() {
+        @Override
+        public Podcast createFromParcel(Parcel in) {
+            return new Podcast(in);
+        }
+
+        @Override
+        public Podcast[] newArray(int size) {
+            return new Podcast[size];
+        }
+    };
+
+    public String getTitle_original() {
+        return title_original;
+    }
+
+    public void setTitle_original(String title_original) {
+        this.title_original = title_original;
+    }
+
+    String title_original;
     public String getListennotes_url() {
         return listennotes_url;
     }
@@ -94,5 +132,23 @@ public class Podcast {
 
     public void setTotal_episodes(long total_episodes) {
         this.total_episodes = total_episodes;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(listennotes_url);
+        dest.writeString(title);
+        dest.writeString(image);
+        dest.writeString(id);
+        dest.writeString(thumbnail);
+        dest.writeString(publisher);
+        dest.writeString(description);
+        dest.writeLong(total_episodes);
+        dest.writeString(title_original);
     }
 }

@@ -4,4 +4,21 @@
     <dimen name="normal_txt">18sp</dimen>
     <dimen name="sub_menu_size">20sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="title_text">20sp</dimen>
+    <dimen name="actionBarSize">100dp</dimen>
+    <dimen name="mediaControllerSize">50dp</dimen>
+    <dimen name="min_width_widget">200dp</dimen>
+    <dimen name="min_height_widget">60dp</dimen>
+
+    <dimen name="size_image_subscribe">130dp</dimen>
+    <dimen name="size_image_detail">130dp</dimen>
+    <dimen name="size_image_item">80dp</dimen>
+    <dimen name="size_image_nav">60dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="size_image_bt">56dp</dimen>
+    <dimen name="widget_size_image_bt">40dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="widget_size_min">40dp</dimen>
+    <dimen name="margin_vertical_4">4dp</dimen>
 </resources>

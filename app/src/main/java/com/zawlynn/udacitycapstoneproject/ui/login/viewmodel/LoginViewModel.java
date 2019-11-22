@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.zawlynn.udacitycapstoneproject.data.network.Resource;
 import com.zawlynn.udacitycapstoneproject.pojo.Genre;
-import com.zawlynn.udacitycapstoneproject.repository.ApiRepository;
+import com.zawlynn.udacitycapstoneproject.data.repository.ApiRepository;
 
 import java.util.List;
 

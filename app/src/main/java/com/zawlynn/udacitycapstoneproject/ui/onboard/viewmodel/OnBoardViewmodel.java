@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import com.zawlynn.udacitycapstoneproject.data.network.Resource;
-import com.zawlynn.udacitycapstoneproject.repository.ApiRepository;
+import com.zawlynn.udacitycapstoneproject.data.repository.ApiRepository;
 
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

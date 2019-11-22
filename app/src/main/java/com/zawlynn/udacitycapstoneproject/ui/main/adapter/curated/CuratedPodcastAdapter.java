@@ -7,18 +7,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingPodcastItem;
 import com.zawlynn.udacitycapstoneproject.pojo.CuratedPodcast;
+import com.zawlynn.udacitycapstoneproject.ui.main.fragment.OnCuratedPodcastClicked;
 
 
 public class CuratedPodcastAdapter extends ListAdapter<CuratedPodcast, CuratedPodcastViewHolder> {
-    public CuratedPodcastAdapter() {
+    private OnCuratedPodcastClicked onCuratedPodcastClicked;
+    public CuratedPodcastAdapter(OnCuratedPodcastClicked podcastClicked) {
         super(new CuratedPodcastItemCallback());
+        this.onCuratedPodcastClicked=podcastClicked;
     }
     @NonNull
     @Override
     public CuratedPodcastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         BindingPodcastItem itemBinding = BindingPodcastItem.inflate(layoutInflater, parent, false);
-        return new CuratedPodcastViewHolder(itemBinding);
+        return new CuratedPodcastViewHolder(itemBinding,this.onCuratedPodcastClicked);
     }
 
     @Override

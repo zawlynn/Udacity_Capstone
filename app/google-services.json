@@ -8,12 +8,49 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:625826045573:android:b252773a9975555099d3ec",
+        "android_client_info": {
+          "package_name": "com.zawlynn.udacity.capstone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625826045573-5jkdo6l9s5jfdbkrkqdtvmu144n476h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxubv43TQ_I9_wCjhkqZzT1khVDrAg97U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625826045573-5jkdo6l9s5jfdbkrkqdtvmu144n476h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:625826045573:android:ca1e1e170febf66e99d3ec",
         "android_client_info": {
           "package_name": "com.zawlynn.udacitycapstoneproject"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "625826045573-bnrv163iuiuukncgs74d6m6if33kqpjl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zawlynn.udacitycapstoneproject",
+            "certificate_hash": "24dacdfab8a5be88748c8c881ede3224cfbc4f14"
+          }
+        },
         {
           "client_id": "625826045573-5jkdo6l9s5jfdbkrkqdtvmu144n476h1.apps.googleusercontent.com",
           "client_type": 3

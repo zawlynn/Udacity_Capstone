@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.zawlynn.udacitycapstoneproject.utils.NetworkUtils;
+
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.exceptions.Exceptions;
@@ -28,7 +30,7 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
                 })
                 .flatMap(requestTypeResponse -> loadFromDb()));
 
-        if(isNetworkStatusAvailable(context)){
+        if(NetworkUtils.getInstance().isNetworkStatusAvailable(context)){
            result= networkObservable.map(Resource::success)
                     .onErrorReturn(throwable -> Resource.error(throwable.getMessage(), null))
                     .observeOn(AndroidSchedulers.mainThread())
@@ -45,12 +47,6 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
         return response.body();
     }
 
-    private boolean isNetworkStatusAvailable(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
 
     public Flowable<Resource<ResultType>> asFlowable() {
         return result;

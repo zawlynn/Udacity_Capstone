@@ -11,12 +11,12 @@ import com.zawlynn.udacitycapstoneproject.databinding.BindingEpisodeItem;
 import com.zawlynn.udacitycapstoneproject.databinding.GenreItemBinding;
 import com.zawlynn.udacitycapstoneproject.pojo.Episode;
 import com.zawlynn.udacitycapstoneproject.pojo.Genre;
+import com.zawlynn.udacitycapstoneproject.ui.podcast.event.OnEpisodeClick;
 
 
 class EpisodeViewHolder extends RecyclerView.ViewHolder {
     private BindingEpisodeItem itemBinding;
     private Context context;
-
     EpisodeViewHolder(BindingEpisodeItem binding) {
         super(binding.getRoot());
         this.itemBinding = binding;
@@ -29,5 +29,7 @@ class EpisodeViewHolder extends RecyclerView.ViewHolder {
                 .load(item.getThumbnail())
                 .apply(RequestOptions.circleCropTransform())
                 .into(itemBinding.imgEpisodeThumb);
+
+
     }
 }

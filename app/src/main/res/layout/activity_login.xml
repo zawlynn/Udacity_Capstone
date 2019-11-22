@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data class="LoginBinding"/>
     <RelativeLayout
+        android:id="@+id/container"
         android:background="@color/black"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -46,28 +47,6 @@
                 android:textColor="@color/black"
                 android:text="@string/sign_in_with_google"
                 android:textAllCaps="false" />
-            <Button
-                android:textColor="@color/black"
-                android:layout_margin="20dp"
-                android:layout_gravity="center"
-                android:id="@+id/sign_up"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawablePadding="5dp"
-                android:text="@string/sign_up_with_email"
-                android:textAllCaps="false" />
-          >
         </LinearLayout>
-        <TextView
-            android:layout_margin="20dp"
-            android:layout_alignParentBottom="true"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:fontFamily="@font/main_font"
-            android:text="@string/already_has"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </RelativeLayout>
 </layout>

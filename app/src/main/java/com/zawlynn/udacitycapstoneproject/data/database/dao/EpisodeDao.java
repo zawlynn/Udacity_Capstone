@@ -11,16 +11,28 @@ import com.zawlynn.udacitycapstoneproject.pojo.Genre;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 
 @Dao
 public abstract class EpisodeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void saveEpisode(Episode data);
 
-    @Query(" SELECT * FROM Episode ORDER BY title DESC")
+    @Query(" SELECT * FROM Episode where saved = 0 ORDER BY title DESC ")
     public abstract Flowable<List<Episode>> getAllEpisode();
+
+
+    @Query(" SELECT * FROM Episode where saved = 1")
+    public abstract Flowable<List<Episode>> getSavedEpisode();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void saveEpisodes(List<Episode> data);
+
+    @Query("DELETE FROM Episode where id=:id")
+    public abstract void removeEpisode(String id);
+
+    @Query("SELECT id FROM Episode WHERE id = :id LIMIT 1")
+    public abstract Observable<String> checkExists(String id);
+
 }
 

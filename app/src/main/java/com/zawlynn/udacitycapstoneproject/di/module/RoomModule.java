@@ -8,6 +8,7 @@ import com.zawlynn.udacitycapstoneproject.data.database.PodcastDatabase;
 import com.zawlynn.udacitycapstoneproject.data.database.dao.CuratedPodcastDao;
 import com.zawlynn.udacitycapstoneproject.data.database.dao.EpisodeDao;
 import com.zawlynn.udacitycapstoneproject.data.database.dao.GenreDao;
+import com.zawlynn.udacitycapstoneproject.data.database.dao.PodcastDao;
 
 import javax.inject.Singleton;
 
@@ -27,6 +28,10 @@ public class RoomModule {
     @Provides
     CuratedPodcastDao provideCuratedPodcastDao(PodcastDatabase database){
         return database.curatedPodcastDao();
+    }
+    @Provides
+    PodcastDao providePodcastDao(PodcastDatabase database){
+        return database.podcastDao();
     }
     @Provides
     @Singleton

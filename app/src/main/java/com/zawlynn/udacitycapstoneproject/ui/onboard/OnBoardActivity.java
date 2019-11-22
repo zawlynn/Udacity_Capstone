@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.zawlynn.udacitycapstoneproject.R;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingOnBoard;
-import com.zawlynn.udacitycapstoneproject.ui.main.MainActivity;
+import com.zawlynn.udacitycapstoneproject.ui.main.HomeActivity;
 import com.zawlynn.udacitycapstoneproject.ui.onboard.viewmodel.OnBoardViewmodel;
 
 public class OnBoardActivity extends AppCompatActivity {
@@ -31,8 +31,8 @@ public class OnBoardActivity extends AppCompatActivity {
         });
         viewmodel.isComplete().observe(this, status->{
             if(status){
-                Intent i=new Intent(this, MainActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Intent i=new Intent(this, HomeActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
                 finish();
             }else {

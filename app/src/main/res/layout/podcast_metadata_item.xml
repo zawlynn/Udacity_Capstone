@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout   xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="BindingPodcastMetadataItem"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/small_margin"
+            android:id="@+id/imgPlay"
+            android:src="@mipmap/ic_play"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imgPlay"
+            android:layout_toStartOf="@id/imgDownload"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_title"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:id="@+id/tv_publisher"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/small_margin"
+            android:id="@+id/imgDownload"
+            android:src="@mipmap/ic_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ProgressBar
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/small_margin"
+            android:id="@+id/progress_download"
+            android:src="@mipmap/ic_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</layout>

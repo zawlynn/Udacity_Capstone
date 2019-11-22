@@ -10,6 +10,7 @@
         app:cardCornerRadius="4dp"
         android:orientation="vertical">
         <RelativeLayout
+            android:id="@+id/tvBackground"
             android:background="@drawable/genre_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

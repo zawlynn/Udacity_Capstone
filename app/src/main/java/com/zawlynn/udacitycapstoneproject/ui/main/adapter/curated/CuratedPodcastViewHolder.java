@@ -8,16 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingPodcastItem;
 import com.zawlynn.udacitycapstoneproject.pojo.CuratedPodcast;
+import com.zawlynn.udacitycapstoneproject.ui.main.fragment.OnCuratedPodcastClicked;
 
 
 class CuratedPodcastViewHolder extends RecyclerView.ViewHolder {
     private BindingPodcastItem itemBinding;
     private Context context;
-
-    CuratedPodcastViewHolder(BindingPodcastItem binding) {
+    private OnCuratedPodcastClicked onCuratedPodcastClicked;
+    CuratedPodcastViewHolder(BindingPodcastItem binding, OnCuratedPodcastClicked  podcastClicked) {
         super(binding.getRoot());
         this.itemBinding = binding;
         context = binding.getRoot().getContext();
+        this.onCuratedPodcastClicked=podcastClicked;
     }
 
     void bind(CuratedPodcast item) {
@@ -27,6 +29,8 @@ class CuratedPodcastViewHolder extends RecyclerView.ViewHolder {
                     .load(item.getPodcasts().get(0).getThumbnail())
                     .into(itemBinding.imgPodcastThumb);
         }
-
+        itemBinding.imgPodcastThumb.setOnClickListener(view -> {
+            this.onCuratedPodcastClicked.onCuratedPodcastClicked(item);
+        });
     }
 }

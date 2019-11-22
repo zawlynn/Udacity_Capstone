@@ -8,6 +8,7 @@ import com.zawlynn.udacitycapstoneproject.data.database.converter.PodcastTypeCon
 import com.zawlynn.udacitycapstoneproject.data.database.dao.CuratedPodcastDao;
 import com.zawlynn.udacitycapstoneproject.data.database.dao.EpisodeDao;
 import com.zawlynn.udacitycapstoneproject.data.database.dao.GenreDao;
+import com.zawlynn.udacitycapstoneproject.data.database.dao.PodcastDao;
 import com.zawlynn.udacitycapstoneproject.pojo.CuratedPodcast;
 import com.zawlynn.udacitycapstoneproject.pojo.Episode;
 import com.zawlynn.udacitycapstoneproject.pojo.Genre;
@@ -20,4 +21,5 @@ public abstract class PodcastDatabase extends RoomDatabase {
     public abstract GenreDao genreDao();
     public abstract EpisodeDao episodeDao();
     public abstract CuratedPodcastDao curatedPodcastDao();
+    public abstract PodcastDao podcastDao();
 }

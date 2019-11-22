@@ -8,10 +8,13 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.zawlynn.udacitycapstoneproject.databinding.BindingEpisodeItem;
 import com.zawlynn.udacitycapstoneproject.pojo.Episode;
+import com.zawlynn.udacitycapstoneproject.ui.podcast.event.OnEpisodeClick;
 
-public class EpisodeAdapter extends ListAdapter<Episode, EpisodeViewHolder> {
-    public EpisodeAdapter() {
+public class EpisodeAdapter extends ListAdapter<Episode, EpisodeViewHolder>{
+    private OnEpisodeClick  onEpisodeClick;
+    public EpisodeAdapter(OnEpisodeClick episodeClick) {
         super(new EpisodeItemCallback());
+        onEpisodeClick=episodeClick;
     }
     @NonNull
     @Override
@@ -25,6 +28,9 @@ public class EpisodeAdapter extends ListAdapter<Episode, EpisodeViewHolder> {
     public void onBindViewHolder(@NonNull EpisodeViewHolder holder, int position) {
         Episode item=getItem(position);
         holder.bind(item);
+        holder.itemView.setOnClickListener(view -> {
+            onEpisodeClick.onEpisodeClick(position);
+        });
         holder.setIsRecyclable(false);
     }
 
@@ -37,5 +43,6 @@ public class EpisodeAdapter extends ListAdapter<Episode, EpisodeViewHolder> {
     public long getItemId(int position) {
         return super.getItemId(position);
     }
+
 
 }

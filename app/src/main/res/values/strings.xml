@@ -14,4 +14,72 @@
     <string name="curated">Curated Podcasts</string>
     <string name="you_might_like">You might like this podcasts</string>
     <string name="title_activity_podcast">PodcastActivity</string>
+    <string name="podcast">Podcast</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search by name</string>
+    <string name="download_completed">Download Completed</string>
+    <string name="download_failed">Download Failed</string>
+    <string name="restart">Restart</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_media_controller">MediaControllerFragment</string>
+    <string name="fragment_home">HomeFragment</string>
+    <string name="fragment_podcast">PodcastFragment</string>
+    <string name="fragment_playlist">PlaylistFragment</string>
+
+
+    <!-- Firestore collections -->
+    <string name="collection_audio">Audio</string>
+    <string name="collection_music">Music</string>
+    <string name="collection_podcasts">Podcasts</string>
+    <string name="collection_content">Content</string>
+
+    <!-- Firestore documents  -->
+    <string name="document_categories">Categories</string>
+
+    <!-- Firestore Fields -->
+    <string name="field_categories">categories</string>
+    <string name="field_media_id">media_id</string>
+    <string name="field_media_url">media_url</string>
+    <string name="field_artist">artist</string>
+    <string name="field_date_added">date_added</string>
+    <string name="field_description">description</string>
+    <string name="field_title">title</string>
+
+
+    <!-- Broadcast Receivers -->
+    <string name="broadcast_seekbar_update">broadcast_seekbar_update_v3</string>
+    <string name="broadcast_seekbar_value">broadcast_seekbar_value_v3</string>
+    <string name="broadcast_update_ui">broadcast_update_ui_v3</string>
+    <string name="broadcast_new_media_id">broadcast_new_media_id_v3</string>
+
+    <string name="string_remove_from_playlist">Remove from playlist?</string>
+    <string name="string_yes">yes</string>
+    <string name="string_no">no</string>
+    <string name="label_stop">Stop</string>
+    <string name="label_pause">Pause</string>
+    <string name="label_play">Play</string>
+    <string name="label_play_pause">Play and pause toggle</string>
+    <string name="label_previous">Previous track</string>
+    <string name="label_next">Next track</string>
+
+
+    <string name="categories">Categories</string>
+    <string name="saved_episode">Saved Episodes</string>
+    <string name="no_internet">No internet available. Please connect with Mobile Data for Wifi.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_empty_content_des">Empty image</string>
+    <string name="pref_podcast_title_key" translatable="false">pref_podcast_title</string>
+    <string name="pref_episode_title_key" translatable="false">pref_episode_title</string>
+    <string name="pref_episode_image_key" translatable="false">pref_episode_image</string>
+    <string name="play_pause_content_description">Play or pause</string>
+    <string name="artwork_content_description">Artwork</string>
+    <string name="login_failed">Authentication Failed.</string>
 </resources>

@@ -8,18 +8,22 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.zawlynn.udacitycapstoneproject.databinding.GenreItemBinding;
 import com.zawlynn.udacitycapstoneproject.pojo.Genre;
+import com.zawlynn.udacitycapstoneproject.ui.genre.event.OnGenreClicked;
 
 public class GenreAdapter extends ListAdapter<Genre,GenreViewHolder> {
-    public GenreAdapter() {
+    private OnGenreClicked clicked;
+    private boolean isSearch;
+    public GenreAdapter(OnGenreClicked onGenreClicked,boolean search) {
         super(new GenreItemCallback());
-
+        this.clicked=onGenreClicked;
+        this.isSearch=search;
     }
     @NonNull
     @Override
     public GenreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         GenreItemBinding itemBinding = GenreItemBinding.inflate(layoutInflater, parent, false);
-        return new GenreViewHolder(itemBinding);
+        return new GenreViewHolder(itemBinding,parent.getContext(),clicked,isSearch);
     }
 
     @Override
@@ -27,6 +31,7 @@ public class GenreAdapter extends ListAdapter<Genre,GenreViewHolder> {
         Genre item=getItem(position);
         holder.bind(item);
         holder.setIsRecyclable(false);
+
     }
 
     @Override
