@@ -5,7 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.HomeActivity">
+        tools:context="com.zawlynn.capstoneproject.ui.main.HomeActivity">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recLibrary"
             android:layout_width="match_parent"

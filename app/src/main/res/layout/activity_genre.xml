@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.genre.GenreActivity">
+        tools:context="com.zawlynn.capstoneproject.ui.genre.GenreActivity">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recGenre"
             android:layout_above="@+id/layout_footer"

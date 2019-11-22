@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.onboard.OnBoardActivity">
+        tools:context="com.zawlynn.capstoneproject.ui.onboard.OnBoardActivity">
 
         <ProgressBar
             android:id="@+id/pb_loading"
