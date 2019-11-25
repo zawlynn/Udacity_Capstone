@@ -1,4 +1,4 @@
-package com.zawlynn.capstoneproject.ui.main.fragment;
+package com.zawlynn.capstoneproject.ui.main.event;
 
 import com.zawlynn.capstoneproject.pojo.CuratedPodcast;
 

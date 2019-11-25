@@ -37,7 +37,8 @@ import com.zawlynn.capstoneproject.utils.MyPreferenceManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OfflinePlayerActivity extends AppCompatActivity implements IPodcastListener, MediaBrowserHelperCallback, OnNetworkStateListener {
+public class OfflinePlayerActivity extends AppCompatActivity implements IPodcastListener,
+        MediaBrowserHelperCallback, OnNetworkStateListener {
     PodcastBinding binding;
     Podcast podcast;
     private MediaBrowserHelper mMediaBrowserHelper;
@@ -64,7 +65,8 @@ public class OfflinePlayerActivity extends AppCompatActivity implements IPodcast
         mMediaBrowserHelper.setMediaBrowserHelperCallback(this);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_container, PlaylistFragment.newInstance(podcast, episodes,true), getString(R.string.fragment_playlist));
+        transaction.replace(R.id.main_container, PlaylistFragment.newInstance(podcast,
+                episodes,true), getString(R.string.fragment_playlist));
         transaction.commit();
     }
 

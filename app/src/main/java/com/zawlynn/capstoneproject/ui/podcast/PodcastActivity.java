@@ -39,7 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PodcastActivity extends AppCompatActivity implements IPodcastListener, MediaBrowserHelperCallback, OnNetworkStateListener {
+public class PodcastActivity extends AppCompatActivity implements IPodcastListener,
+        MediaBrowserHelperCallback, OnNetworkStateListener {
     PodcastBinding binding;
     Podcast podcast;
     private MediaBrowserHelper mMediaBrowserHelper;
@@ -76,7 +77,8 @@ public class PodcastActivity extends AppCompatActivity implements IPodcastListen
             String newMediaId = intent.getStringExtra(getString(R.string.broadcast_new_media_id));
             Log.d(TAG, "onReceive: CALLED: " + newMediaId);
             if (getPlaylistFragment() != null) {
-                Log.d(TAG, "onReceive: " + MediaLibrary.getInstance().getMediaItem(newMediaId).getDescription().getMediaId());
+                Log.d(TAG, "onReceive: " + MediaLibrary.getInstance().getMediaItem(newMediaId)
+                        .getDescription().getMediaId());
                 getPlaylistFragment().updateUI(MediaLibrary.getInstance().getMediaItem(newMediaId));
             }
         }

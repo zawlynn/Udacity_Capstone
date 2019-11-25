@@ -36,7 +36,6 @@ public class MyPreferenceManager {
     }
 
     public void saveQueuePosition(int position){
-        Log.d(TAG, "saveQueuePosition: SAVING QUEUE INDEX: " + position);
         SharedPreferences.Editor editor = mPreferences.edit();
         editor.putInt(MEDIA_QUEUE_POSITION, position);
         editor.apply();

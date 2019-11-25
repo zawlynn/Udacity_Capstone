@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.zawlynn.capstoneproject.pojo.CuratedPodcast;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingPodcastItem;
-import com.zawlynn.capstoneproject.ui.main.fragment.OnCuratedPodcastClicked;
+import com.zawlynn.capstoneproject.ui.main.event.OnCuratedPodcastClicked;
 
 
 class CuratedPodcastViewHolder extends RecyclerView.ViewHolder {

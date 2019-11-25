@@ -33,7 +33,7 @@ public class MediaNotificationManager {
 
     private final MediaService mMediaService;
     private final NotificationManager mNotificationManager;
-    private static final String CHANNEL_ID = "com.codingwithmitch.spotifyclone.musicplayer.channel";
+    private static final String CHANNEL_ID = "com.zawlynn.udacity.musicplayer.channel";
     private static final int REQUEST_CODE = 101;
     public static final int NOTIFICATION_ID = 201;
 
@@ -76,7 +76,6 @@ public class MediaNotificationManager {
                                 mMediaService,
                                 PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS));
 
-        // cancel all previously shown notifications
         mNotificationManager.cancelAll();
     }
 
@@ -84,29 +83,21 @@ public class MediaNotificationManager {
         return mNotificationManager;
     }
 
-    // Does nothing on versions of Android earlier than O.
     @RequiresApi(Build.VERSION_CODES.O)
     private void createChannel() {
         if (mNotificationManager.getNotificationChannel(CHANNEL_ID) == null) {
-            // The user-visible name of the channel.
             CharSequence name = "MediaSession";
-            // The user-visible description of the channel.
             String description = "MediaSession and MediaPlayer";
             int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
-            // Configure the notification channel.
             mChannel.setDescription(description);
             mChannel.enableLights(true);
-            // Sets the notification light color for notifications posted to this
-            // channel, if the device supports this feature.
             mChannel.setLightColor(Color.RED);
             mChannel.enableVibration(true);
             mChannel.setVibrationPattern(
                     new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
             mNotificationManager.createNotificationChannel(mChannel);
-            Log.d(TAG, "createChannel: New channel created");
         } else {
-            Log.d(TAG, "createChannel: Existing channel reused");
         }
     }
 
@@ -121,8 +112,6 @@ public class MediaNotificationManager {
                                           Bitmap bitmap) {
 
         boolean isPlaying = state.getState() == PlaybackStateCompat.STATE_PLAYING;
-
-        // Create the (mandatory) notification channel when running on Android Oreo.
         if (isAndroidOOrHigher()) {
             createChannel();
         }
@@ -136,28 +125,20 @@ public class MediaNotificationManager {
         )
                 .setColor(ContextCompat.getColor(mMediaService, R.color.notification_bg))
                 .setSmallIcon(R.drawable.ic_audiotrack_grey_24dp)
-                // Pending intent that is fired when user clicks on notification.
                 .setContentIntent(createContentIntent())
-                // Title - Usually Song name.
                 .setContentTitle(description.getTitle())
-                // Subtitle - Usually Artist name.
                 .setContentText(description.getSubtitle())
                 .setLargeIcon(bitmap)
-                // When notification is deleted (when playback is paused and notification can be
-                // deleted) fire MediaButtonPendingIntent with ACTION_STOP.
                 .setDeleteIntent(MediaButtonReceiver.buildMediaButtonPendingIntent(
                         mMediaService, PlaybackStateCompat.ACTION_STOP))
-                // Show controls on lock screen even when user hides sensitive content.
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
-        // If skip to previous action is enabled.
+
         if ((state.getActions() & PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS) != 0) {
             builder.addAction(mPrevAction);
         }
-
         builder.addAction(isPlaying ? mPauseAction : mPlayAction);
 
-        // If skip to next action is enabled.
         if ((state.getActions() & PlaybackStateCompat.ACTION_SKIP_TO_NEXT) != 0) {
             builder.addAction(mNextAction);
         }

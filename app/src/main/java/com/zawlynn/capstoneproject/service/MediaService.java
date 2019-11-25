@@ -75,18 +75,13 @@ public class MediaService extends MediaBrowserServiceCompat {
     @Override
     public void onDestroy() {
         mSession.release();
-        Log.d(TAG, "onDestroy: MediaPlayerAdapter stopped, and MediaSession released");
     }
 
 
     @Nullable
     @Override
     public BrowserRoot onGetRoot(@NonNull String s, int i, @Nullable Bundle bundle) {
-
-        Log.d(TAG, "onGetRoot: called. ");
         if(s.equals(getApplicationContext().getPackageName())){
-
-            // Allowed to browse media
             return new BrowserRoot("some_real_playlist", null);
         }
         return new BrowserRoot("empty_media", null);

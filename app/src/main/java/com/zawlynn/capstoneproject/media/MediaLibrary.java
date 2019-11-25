@@ -39,8 +39,7 @@ public class MediaLibrary {
     public void setMediaItems(List<MediaMetadataCompat> mediaItems){
         mMediaItems.clear();
         for(MediaMetadataCompat item: mediaItems){
-            Log.d(TAG, "setMediaItems: called: adding media item: " + item.getDescription());
-            mMediaItems.add(
+               mMediaItems.add(
                     new MediaBrowserCompat.MediaItem(
                             item.getDescription(), MediaBrowserCompat.MediaItem.FLAG_PLAYABLE)
             );

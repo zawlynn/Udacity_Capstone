@@ -26,14 +26,9 @@ public class MediaControllerFragment extends Fragment implements
 
     private static final String TAG = "MediaControllerFragment";
 
-
-    // UI Components
     private TextView mSongTitle;
     private ImageView mPlayPause;
     private MediaSeekBar mSeekBarAudio;
-
-
-    // Vars
     private IPodcastListener mIMainActivity;
     private MediaMetadataCompat mSelectedMedia;
     private boolean mIsPlaying;

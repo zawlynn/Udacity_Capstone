@@ -24,6 +24,7 @@ import com.zawlynn.capstoneproject.pojo.Genre;
 import com.zawlynn.capstoneproject.pojo.Podcast;
 import com.zawlynn.capstoneproject.ui.main.adapter.episode.EpisodeAdapter;
 import com.zawlynn.capstoneproject.ui.main.adapter.podcast.PodcastAdapter;
+import com.zawlynn.capstoneproject.ui.main.event.OnCuratedPodcastClicked;
 import com.zawlynn.capstoneproject.ui.podcast.PodcastDetailsActivity;
 import com.zawlynn.capstoneproject.ui.search.SearchActivity;
 import com.zawlynn.udacitycapstoneproject.R;
@@ -43,7 +44,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class HomeFragment extends Fragment implements OnPodcastClick, OnGenreClicked,
-        OnCuratedPodcastClicked , OnEpisodeClick {
+        OnCuratedPodcastClicked, OnEpisodeClick {
     private OnNetworkStateListener onNetworkStateListener;
     private MainViewmodel viewmodel;
     private BindingHomeFrag binding;

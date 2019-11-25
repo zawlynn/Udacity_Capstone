@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.zawlynn.capstoneproject.pojo.CuratedPodcast;
 import com.zawlynn.udacitycapstoneproject.databinding.BindingPodcastItem;
-import com.zawlynn.capstoneproject.ui.main.fragment.OnCuratedPodcastClicked;
+import com.zawlynn.capstoneproject.ui.main.event.OnCuratedPodcastClicked;
 
 
 public class CuratedPodcastAdapter extends ListAdapter<CuratedPodcast, CuratedPodcastViewHolder> {

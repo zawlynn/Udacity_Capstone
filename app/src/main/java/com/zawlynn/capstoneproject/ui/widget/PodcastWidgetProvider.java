@@ -1,18 +1,4 @@
-/*
- * Copyright 2018 Soojeong Shin
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 
 package com.zawlynn.capstoneproject.ui.widget;
 
@@ -41,14 +27,10 @@ import static com.zawlynn.capstoneproject.utils.Constant.SIZE_BITMAP;
 import static com.zawlynn.capstoneproject.utils.Constant.WIDGET_PENDING_INTENT_ID;
 
 
-/**
- * Implementation of App Widget functionality.
- */
 public class PodcastWidgetProvider extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-        // Get the updated strings from shared preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String episodeTitle = sharedPreferences.getString(
                 context.getString(R.string.pref_episode_title_key), PREF_DEF_VALUE);
@@ -57,7 +39,6 @@ public class PodcastWidgetProvider extends AppWidgetProvider {
         String episodeImage = sharedPreferences.getString(
                 context.getString(R.string.pref_episode_image_key), PREF_DEF_VALUE);
 
-        // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.podcast_widget);
         views.setTextViewText(R.id.widget_episode_title, episodeTitle);
         views.setTextViewText(R.id.widget_podcast_title, podcastTitle);
@@ -91,7 +72,7 @@ public class PodcastWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // There may be multiple widgets active, so update all of them
+
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
@@ -101,7 +82,6 @@ public class PodcastWidgetProvider extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
-        // Receive a broadcast message and update all widget instances given the widget Ids
         String action = intent.getAction();
         if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action)) {
             int[] appWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
@@ -114,12 +94,12 @@ public class PodcastWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
+
     }
 
     @Override
     public void onDisabled(Context context) {
-        // Enter relevant functionality for when the last widget is disabled
+        
     }
 }
 

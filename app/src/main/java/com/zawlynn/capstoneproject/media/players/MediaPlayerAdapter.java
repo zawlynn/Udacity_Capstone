@@ -40,7 +40,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
     private PlaybackInfoListener mPlaybackInfoListener;
 
 
-    // ExoPlayer objects
     private SimpleExoPlayer mExoPlayer;
     private TrackSelector mTrackSelector;
     private DefaultRenderersFactory mRenderersFactory;
@@ -111,9 +110,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
 
     @Override
     protected void onStop() {
-        // Regardless of whether or not the ExoPlayer has been created / started, the state must
-        // be updated, so that MediaNotificationManager can take down the notification.
-        Log.d(TAG, "onStop: stopped");
         setNewState(PlaybackStateCompat.STATE_STOPPED);
         release();
     }
@@ -122,9 +118,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
     public void seekTo(long position) {
         if (mExoPlayer != null) {
             mExoPlayer.seekTo((int) position);
-
-            // Set the state (to the current state) because the position changed and should
-            // be reported to clients.
             setNewState(mState);
         }
     }
@@ -140,9 +133,7 @@ public class MediaPlayerAdapter extends PlayerAdapter {
         String mediaId = metaData.getDescription().getMediaId();
         boolean mediaChanged = (mCurrentMedia == null || !mediaId.equals(mCurrentMedia.getDescription().getMediaId()));
         if (mCurrentMediaPlayedToCompletion) {
-            // Last audio file was played to completion, the resourceId hasn't changed, but the
-            // player was released, so force a reload of the media file for playback.
-            mediaChanged = true;
+           mediaChanged = true;
             mCurrentMediaPlayedToCompletion = false;
         }
         if (!mediaChanged) {
@@ -164,8 +155,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
                     new ExtractorMediaSource.Factory(mDataSourceFactory)
                             .createMediaSource(Uri.parse(metaData.getString(MediaMetadataCompat.METADATA_KEY_MEDIA_URI)));
             mExoPlayer.prepare(audioSource);
-            Log.d(TAG, "onPlayerStateChanged: PREPARE");
-
         } catch (Exception e) {
             throw new RuntimeException("Failed to play media uri: "
                     + metaData.getString(MediaMetadataCompat.METADATA_KEY_MEDIA_URI), e);
@@ -195,19 +184,13 @@ public class MediaPlayerAdapter extends PlayerAdapter {
     }
 
 
-    // This is the main reducer for the player state machine.
     private void setNewState(@PlaybackStateCompat.State int newPlayerState) {
         mState = newPlayerState;
-
-        // Whether playback goes to completion, or whether it is stopped, the
-        // mCurrentMediaPlayedToCompletion is set to true.
-        if (mState == PlaybackStateCompat.STATE_STOPPED) {
+       if (mState == PlaybackStateCompat.STATE_STOPPED) {
             mCurrentMediaPlayedToCompletion = true;
         }
 
         final long reportPosition = mExoPlayer == null ? 0 : mExoPlayer.getCurrentPosition();
-
-        // Send playback state information to service
         publishStateBuilder(reportPosition);
     }
 
@@ -222,13 +205,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
         mPlaybackInfoListener.onPlaybackStateChange(stateBuilder.build());
         mPlaybackInfoListener.updateUI(mCurrentMedia.getDescription().getMediaId());
     }
-
-    /**
-     * Set the current capabilities available on this session. Note: If a capability is not
-     * listed in the bitmask of capabilities then the MediaSession will not handle it. For
-     * example, if you don't want ACTION_STOP to be handled by the MediaSession, then don't
-     * included it in the bitmask that's returned.
-     */
     @PlaybackStateCompat.Actions
     private long getAvailableActions() {
         long actions = PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID
@@ -284,7 +260,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
                     break;
                 }
                 case Player.STATE_BUFFERING:{
-                    Log.d(TAG, "onPlayerStateChanged: BUFFERING");
                     mStartTime = System.currentTimeMillis();
                     break;
                 }
@@ -293,8 +268,6 @@ public class MediaPlayerAdapter extends PlayerAdapter {
                     break;
                 }
                 case Player.STATE_READY:{
-                    Log.d(TAG, "onPlayerStateChanged: READY");
-                    Log.d(TAG, "onPlayerStateChanged: TIME ELAPSED: " + (System.currentTimeMillis() - mStartTime));
                     break;
                 }
             }

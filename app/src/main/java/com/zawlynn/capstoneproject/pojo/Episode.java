@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity
 public class Episode implements Parcelable {
     private String title;
@@ -161,5 +163,28 @@ public class Episode implements Parcelable {
 
     public void setLocal_file_cache(String local_file_cache) {
         this.local_file_cache = local_file_cache;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Episode episode = (Episode) o;
+        return Objects.equals(title, episode.title) &&
+                Objects.equals(audio_length, episode.audio_length) &&
+                Objects.equals(listennotes_url, episode.listennotes_url) &&
+                Objects.equals(audio, episode.audio) &&
+                Objects.equals(description, episode.description) &&
+                Objects.equals(thumbnail, episode.thumbnail) &&
+                Objects.equals(pub_date_ms, episode.pub_date_ms) &&
+                Objects.equals(image, episode.image) &&
+                Objects.equals(saved, episode.saved) &&
+                id.equals(episode.id) &&
+                Objects.equals(local_file_cache, episode.local_file_cache);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, audio_length, listennotes_url, audio, description, thumbnail, pub_date_ms, image, saved, id, local_file_cache);
     }
 }

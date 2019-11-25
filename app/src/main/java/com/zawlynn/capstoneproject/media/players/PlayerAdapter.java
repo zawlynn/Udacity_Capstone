@@ -26,17 +26,12 @@ public abstract class PlayerAdapter {
     private boolean mPlayOnAudioFocus = false;
 
 
-
     public PlayerAdapter(@NonNull Context context) {
         mApplicationContext = context.getApplicationContext();
         mAudioManager = (AudioManager) mApplicationContext.getSystemService(Context.AUDIO_SERVICE);
         mAudioFocusHelper = new AudioFocusHelper();
     }
 
-
-    /**
-     * Public methods for handle the NOISY broadcast and AudioFocus
-     */
 
     public final void play() {
         if (mAudioFocusHelper.requestAudioFocus()) {
@@ -61,10 +56,6 @@ public abstract class PlayerAdapter {
         onPause();
     }
 
-
-    /**
-     *  Abstract methods for responding to playback changes in the class that extends this one
-     */
     protected abstract void onPlay();
 
     protected abstract void onPause();
@@ -82,9 +73,6 @@ public abstract class PlayerAdapter {
     public abstract void setVolume(float volume);
 
 
-    /**
-     *  NOISY broadcast receiver stuff
-     */
     private static final IntentFilter AUDIO_NOISY_INTENT_FILTER =
             new IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
 
@@ -138,7 +126,6 @@ public abstract class PlayerAdapter {
         public void onAudioFocusChange(int focusChange) {
             switch (focusChange) {
                 case AudioManager.AUDIOFOCUS_GAIN:
-                    Log.d(TAG, "onAudioFocusChange: AUDIOFOCUS_GAIN");
                     if (mPlayOnAudioFocus && !isPlaying()) {
                         play();
                     } else if (isPlaying()) {
@@ -147,21 +134,17 @@ public abstract class PlayerAdapter {
                     mPlayOnAudioFocus = false;
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-                    Log.d(TAG, "onAudioFocusChange: AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
                     setVolume(MEDIA_VOLUME_DUCK);
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                    Log.d(TAG, "onAudioFocusChange: AUDIOFOCUS_LOSS_TRANSIENT");
                     if (isPlaying()) {
                         mPlayOnAudioFocus = true;
                         pause();
                     }
                     break;
-                case AudioManager.AUDIOFOCUS_LOSS: // When another application takes the focus
-                    Log.d(TAG, "onAudioFocusChange: AUDIOFOCUS_LOSS");
+                case AudioManager.AUDIOFOCUS_LOSS:
                     mAudioManager.abandonAudioFocus(this);
                     mPlayOnAudioFocus = false;
-//                    stop(); // stop will 'hard-close' everything
                     pause();
                     break;
             }

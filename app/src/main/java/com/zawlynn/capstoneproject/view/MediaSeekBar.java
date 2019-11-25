@@ -8,10 +8,6 @@ import android.widget.SeekBar;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
 
-/**
- * SeekBar that can be used with a {@link MediaSessionCompat} to track and seek in playing
- * media.
- */
 
 public class MediaSeekBar extends AppCompatSeekBar {
 
@@ -58,7 +54,6 @@ public class MediaSeekBar extends AppCompatSeekBar {
 
     @Override
     public final void setOnSeekBarChangeListener(OnSeekBarChangeListener l) {
-        // Prohibit adding seek listeners to this subclass.
         throw new UnsupportedOperationException("Cannot add listeners to a MediaSeekBar");
     }
 
