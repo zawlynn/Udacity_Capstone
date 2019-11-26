@@ -2,6 +2,8 @@ package com.zawlynn.capstoneproject.di.module;
 
 import android.app.Application;
 
+import com.zawlynn.capstoneproject.PodcastApplication;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -9,14 +11,14 @@ import dagger.Provides;
 
 @Module
 public class ApplicationContextModule {
-    private final Application application;
+    public final PodcastApplication application;
 
-    public ApplicationContextModule(Application application){
+    public ApplicationContextModule(PodcastApplication application){
         this.application=application;
     }
     @Provides
     @Singleton
-    public Application provideAppContext(){
+    public PodcastApplication provideAppContext(){
         return application;
     }
 }

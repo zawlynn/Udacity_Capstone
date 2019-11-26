@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.room.Room;
 
+import com.zawlynn.capstoneproject.PodcastApplication;
 import com.zawlynn.capstoneproject.data.database.PodcastDatabase;
 import com.zawlynn.capstoneproject.data.database.dao.CuratedPodcastDao;
 import com.zawlynn.capstoneproject.data.database.dao.GenreDao;
@@ -35,7 +36,7 @@ public class RoomModule {
     }
     @Provides
     @Singleton
-    public PodcastDatabase provideTodoDatabase(Application application){
+    public PodcastDatabase provideTodoDatabase(PodcastApplication application){
         return Room.databaseBuilder(application,PodcastDatabase.class,"podcast.db")
                 .fallbackToDestructiveMigration().build();
     }

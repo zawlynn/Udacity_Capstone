@@ -2,11 +2,12 @@ package com.zawlynn.capstoneproject;
 
 import android.app.Application;
 
+import com.zawlynn.capstoneproject.di.component.DaggerDataComponent;
+import com.zawlynn.capstoneproject.di.component.DaggerFirebaseComponent;
 import com.zawlynn.capstoneproject.di.component.DataComponent;
 import com.zawlynn.capstoneproject.di.component.FirebaseComponent;
 import com.zawlynn.capstoneproject.di.module.ApplicationContextModule;
-import com.zawlynn.udacitycapstoneproject.di.component.DaggerDataComponent;
-import com.zawlynn.udacitycapstoneproject.di.component.DaggerFirebaseComponent;
+
 
 
 public class PodcastApplication extends Application {
